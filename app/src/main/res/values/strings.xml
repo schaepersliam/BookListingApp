@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">BookListings</string>
+    <string name="action_search">Search</string>
+    <string name="item_image_description">Image that shows the current book thumbnail</string>
+    <string name="star_image_description">This is the start on the left of the average rating</string>
+    <string name="no_internet_connection">No internet connection</string>
+    <string name="no_books">No books were found</string>
+    <string name="search_book">Search for a book</string>
+</resources>
