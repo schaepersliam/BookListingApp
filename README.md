@@ -7,11 +7,11 @@ Please feel free to fork and clone.
 
 ### Feedback
 I would be very pleased about an honest feedback.
-You can give me feedback on [Udacity's Forum page](https://discussions.udacity.com/t/feedback-request-book-listing-app/481504) linked below
+You can give me feedback on [Udacity's Forum page](https://discussions.udacity.com/t/feedback-request-book-listing-app/481504) 
 or you can open a new issue if you find a bug.
 
 Thank you for your help gaining new experience!
 
-### Using of the code
+### Using the code for your own
 If you want to use the code not just for learning,
 please contact me via my [Email](mailto:schaepersliam@gmail.com).
