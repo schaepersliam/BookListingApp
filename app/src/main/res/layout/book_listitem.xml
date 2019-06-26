@@ -6,77 +6,95 @@
     android:layout_height="wrap_content"
     android:background="#FFFFFF">
 
-    <ImageView
-        android:id="@+id/item_image"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:layout_gravity="center"
-        android:contentDescription="@string/item_image_description"
-        android:layout_marginBottom="8dp"
-        android:layout_marginTop="8dp"
-        android:scaleType="centerInside"
-        tools:src="@drawable/content"/>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:layout_toEndOf="@id/item_image"
-        android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/item_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="sans-serif"
-            android:textColor="#000000"
-            android:textSize="18sp"
-            tools:text="Steve Jobs" />
-
-        <TextView
-            android:id="@+id/item_author"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:layout_marginTop="2dp"
-            android:fontFamily="sans-serif"
-            android:textSize="13sp"
-            tools:text="Walter Isacsons" />
-
-    </LinearLayout>
-
-    <LinearLayout
+    <android.support.v7.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="end"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:orientation="horizontal">
+        android:layout_height="65dp">
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:contentDescription="@string/star_image_description"
-            android:id="@+id/rating_star"
-            android:src="@drawable/ic_star_rate_black_18dp" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#263238">
 
-        <TextView
-            android:id="@+id/item_rating"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="sans-serif"
-            android:textSize="13sp"
-            tools:text="4.1" />
+            <ImageView
+                android:id="@+id/item_image"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_gravity="center"
+                android:contentDescription="@string/item_image_description"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="8dp"
+                android:scaleType="centerInside"
+                tools:src="@drawable/content"/>
 
-    </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toEndOf="@id/item_image"
+                android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/item_price"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:text="€9.99"
-        android:gravity="end"
-        android:layout_marginEnd="8dp"
-        android:layout_alignBottom="@id/item_image"/>
+                <TextView
+                    android:id="@+id/item_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif"
+                    android:textColor="#FFFFFF"
+                    android:textSize="18sp"
+                    tools:text="Steve Jobs" />
+
+                <TextView
+                    android:id="@+id/item_author"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginTop="2dp"
+                    android:fontFamily="sans-serif"
+                    android:textSize="13sp"
+                    android:textColor="@color/colorAccent"
+                    tools:text="Walter Isacsons" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="end"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:orientation="horizontal"
+                tools:ignore="UseCompoundDrawables">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/star_image_description"
+                    android:id="@+id/rating_star"
+                    android:src="@drawable/ic_star_black_24dp" />
+
+                <TextView
+                    android:id="@+id/item_rating"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif"
+                    android:textSize="13sp"
+                    android:textColor="#FFFFFF"
+                    tools:text="4.1" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/item_price"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:text="€9.99"
+                android:textColor="#FFFFFF"
+                android:gravity="end"
+                android:layout_marginEnd="8dp"
+                android:layout_alignBottom="@id/item_image"/>
+
+        </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
+
 
 </RelativeLayout>

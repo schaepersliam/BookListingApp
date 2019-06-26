@@ -39,17 +39,15 @@ public class BookAdapter extends ArrayAdapter<Book> {
         TextView author = listItemView.findViewById(R.id.item_author);
         TextView price = listItemView.findViewById(R.id.item_price);
         TextView rating = listItemView.findViewById(R.id.item_rating);
-        ImageView rating_star = listItemView.findViewById(R.id.rating_star);
 
         assert currentBook != null;
         if (Objects.equals(currentBook.getPrice(), "€---")) {
-            price.setVisibility(View.GONE);
+            price.setText("€---");
         } else {
             price.setText(currentBook.getPrice() + "");
         }
         if (Objects.equals(currentBook.getRating(), "-")) {
-            rating.setVisibility(View.GONE);
-            rating_star.setVisibility(View.GONE);
+            rating.setText("-");
         } else {
             rating.setText(currentBook.getRating());
         }
@@ -82,7 +80,7 @@ public class BookAdapter extends ArrayAdapter<Book> {
         if (currentBook.getBookTitle().length() > 20) {
             bookTitle.delete(20, currentBook.getBookTitle().length());
             bookTitle.append("...");
-            Log.e("BookTitle", bookTitle.toString());
+            Log.e("BookTitle", currentBook.getPrice());
         }
 
         String thumbnail_url = currentBook.getThumbnailUrl();

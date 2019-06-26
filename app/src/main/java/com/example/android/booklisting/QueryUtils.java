@@ -84,7 +84,7 @@ class QueryUtils {
         return output.toString();
     }
 
-    private static List<Book> extractFromJSONResponse(String JSONResponse) throws JSONException {
+    private static List<Book> extractFromJSONResponse(String JSONResponse) {
         if (TextUtils.isEmpty(JSONResponse)) {
             return null;
         }
@@ -140,7 +140,7 @@ class QueryUtils {
         return books;
     }
 
-    static List<Book> fetchEarthquakeData(String requestUrl) throws JSONException {
+    static List<Book> fetchEarthquakeData(String requestUrl) {
         URL url = createUrl(requestUrl);
         String jsonResponse = null;
         try {

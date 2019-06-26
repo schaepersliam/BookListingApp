@@ -6,4 +6,16 @@
     <string name="no_internet_connection">No internet connection</string>
     <string name="no_books">No books were found</string>
     <string name="search_book">Search for a book</string>
+    <string name="about_1">Made with </string>
+    <string name="about_2">by Liam Schäpers</string>
+    <string name="about_3">in Germany</string>
+    <string name="about_license">©Mozilla Public License 2.0</string>
+    <string name="close_button">Close</string>
+    <string name="search_button">Search button</string>
+    <string name="search_for_a_book">Search for a book</string>
+    <string name="open_menu">Open menu</string>
+    <string name="top_matches">Top Matches</string>
+    <string name="search_for_a_book_right_now">Search for a book right now</string>
+    <string name="type_here">Type here</string>
+    <string name="search">Search</string>
 </resources>

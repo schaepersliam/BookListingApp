@@ -1,16 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
-
-    <android.support.v7.widget.Toolbar xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="?attr/colorPrimary"
-        android:elevation="4dp"
-        android:theme="@style/ThemeOverlay.AppCompat.Light"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
+    android:layout_height="match_parent"
+    android:background="@drawable/background">
 
     <TextView
         android:id="@+id/empty_view"
@@ -19,18 +12,80 @@
         android:layout_centerInParent="true"
         android:textAppearance="?android:textAppearanceMedium"/>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="350dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="25dp"
+            android:orientation="horizontal"
+            android:background="@drawable/rounded_edittext">
+
+            <ImageButton
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="15dp"
+                android:id="@+id/main_start_search"
+                android:layout_gravity="center_vertical"
+                android:background="@android:color/transparent"
+                android:src="@drawable/ic_search_black_24dp"
+                android:contentDescription="@string/search_button" />
+
+            <EditText
+                android:layout_width="225dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="12dp"
+                android:hint="@string/search_for_a_book"
+                android:gravity="center"
+                android:inputType="text"
+                android:id="@+id/main_search_edit"
+                android:textColorHint="#FFFFFF"
+                android:layout_gravity="center_vertical"
+                android:importantForAutofill="no"
+                tools:targetApi="o" />
+
+            <ImageButton
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:id="@+id/main_open_menu"
+                android:layout_gravity="center_vertical"
+                android:background="@android:color/transparent"
+                android:src="@drawable/ic_menu_black_24dp"
+                android:contentDescription="@string/open_menu" />
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/top_matches"
+            android:layout_gravity="center"
+            android:layout_marginTop="25dp"
+            android:fontFamily="@font/believe_it"
+            android:textSize="40sp"
+            android:textColor="#FFFFFF"/>
+
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/list_view"
+            android:layout_marginTop="15dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:layout_marginBottom="15dp">
+        </ListView>
+
+    </LinearLayout>
+
     <ProgressBar
         android:id="@+id/loading_spinner"
         style="@style/Widget.AppCompat.ProgressBar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"/>
-
-    <ListView
-        android:layout_width="match_parent"
-        android:layout_below="@id/toolbar"
-        android:layout_height="match_parent"
-        android:id="@+id/list_view">
-    </ListView>
 
 </RelativeLayout>

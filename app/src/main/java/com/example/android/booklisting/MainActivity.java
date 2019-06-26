@@ -1,30 +1,27 @@
 package com.example.android.booklisting;
 
+import android.app.Activity;
 import android.app.LoaderManager;
 import android.content.Context;
+import android.content.Intent;
 import android.content.Loader;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
-import android.support.v4.view.MenuItemCompat;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.SearchView;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<List<Book>> {
 
-    private String url1 = "https://www.googleapis.com/books/v1/volumes?q=";
-    private String url2 = "&maxResults=10";
     private String url = "https://www.googleapis.com/books/v1/volumes?q=stve%20jobs&maxResults=10";
     private BookAdapter mAdapter;
 
@@ -32,45 +29,58 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        android.support.v7.widget.Toolbar tools = findViewById(R.id.toolbar);
-        setSupportActionBar(tools);
-        final ActionBar ab = getSupportActionBar();
-        assert ab != null;
-        ab.setDisplayHomeAsUpEnabled(true);
-        TextView emptyTextView = findViewById(R.id.empty_view);
-        emptyTextView.setText(R.string.search_book);
         View loading_screen = findViewById(R.id.loading_spinner);
+        ImageButton open_menu = findViewById(R.id.main_open_menu);
+        ImageButton start_search = findViewById(R.id.main_start_search);
+        final EditText main_edit = findViewById(R.id.main_search_edit);
         loading_screen.setVisibility(View.GONE);
         ListView listView = findViewById(R.id.list_view);
-        listView.setEmptyView(emptyTextView);
         mAdapter = new BookAdapter(this, new ArrayList<Book>());
         listView.setAdapter(mAdapter);
+        Intent intent = new Intent(this, MainFrontScreen.class);
+        startActivityForResult(intent, 1);
+
+        start_search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (!main_edit.getText().toString().equals("")) {
+                    doQuery(main_edit.getText().toString());
+                    main_edit.getText().clear();
+                } else {
+                    Toast toast = Toast.makeText(getApplicationContext(),"Your search is empty, try again!",Toast.LENGTH_SHORT);
+                    toast.show();
+                }
+            }
+        });
+
+        open_menu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent menu = new Intent(getApplicationContext(),about_menu.class);
+                startActivity(menu);
+            }
+        });
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu){
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu, menu);
-        MenuItem searchItem = menu.findItem(R.id.action_search);
-        SearchView searchView = (SearchView) MenuItemCompat.getActionView(searchItem);
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String query) {
-                query = query.replaceAll("\\s", "%20");
-                Log.i("Query", query);
-                url = url1 + query.toLowerCase() + url2;
-                Loader();
-                final ActionBar ab = getSupportActionBar();
-                assert ab != null;
-                return true;
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 1) {
+            if (resultCode == Activity.RESULT_OK) {
+                String newText = data.getStringExtra("input_text");
+                Log.i("Result from Input: ", newText);
+                doQuery(newText);
             }
+        }
+    }
 
-            @Override
-            public boolean onQueryTextChange(String newText) {
-                return false;
-            }
-        });
-        return super.onCreateOptionsMenu(menu);
+    private void doQuery(String query) {
+        query = query.replaceAll("\\s", "%20");
+        Log.i("Query", query);
+        String url1 = "https://www.googleapis.com/books/v1/volumes?q=";
+        String url2 = "&maxResults=10";
+        url = url1 + query.toLowerCase() + url2;
+        Loader();
     }
 
     @Override
@@ -88,7 +98,29 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         loading_screen.setVisibility(View.GONE);
         mAdapter.clear();
         if (books != null && !books.isEmpty()) {
-            mAdapter.addAll(books);
+            ArrayList<Book> final_list = new ArrayList<>();
+            for (int i = 0; i < books.size(); i++) {
+                Book currentbook = books.get(i);
+                if (!currentbook.getPrice().equals("€---")) {
+                    if (!currentbook.getRating().equals("-")) {
+                        final_list.add(currentbook);
+                        books.remove(i);
+                        break;
+                    }
+                }
+            }
+            for (int i = 0;i<books.size();i++) {
+                Book currentbook = books.get(i);
+                if (!currentbook.getRating().equals("-") && currentbook.getPrice().equals("€---")) {
+                    final_list.add(currentbook);
+                }
+                else if (!currentbook.getPrice().equals("€---") && currentbook.getRating().equals("-")) {
+                    final_list.add(currentbook);
+                } else if (!currentbook.getRating().equals("-") && !currentbook.getPrice().equals("€---")) {
+                    final_list.add(currentbook);
+                }
+            }
+            mAdapter.addAll(final_list);
         }
         Log.e("onLoadFinished", "Loading finished!");
     }

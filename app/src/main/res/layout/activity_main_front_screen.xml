@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    android:orientation="vertical"
+    tools:context=".MainFrontScreen">
+
+
+    <TextView
+        android:id="@+id/search_book_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="200dp"
+        android:fontFamily="@font/believe_it"
+        android:text="@string/search_for_a_book_right_now"
+        android:textSize="40sp"
+        android:textColor="#FFFFFF"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="250dp"
+        android:layout_gravity="center"
+        android:gravity="center">
+
+        <EditText
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:hint="@string/type_here"
+            android:inputType="text"
+            android:id="@+id/search_edit_text"
+            android:textColorHint="#000000"
+            android:gravity="center"
+            android:layout_marginBottom="15dp"
+            android:background="@drawable/rounded_edittext"
+            android:importantForAutofill="no"
+            tools:targetApi="o" />
+
+        <Button
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:text="@string/search"
+            android:id="@+id/button_search"
+            android:background="@drawable/rounded_button"/>
+
+    </LinearLayout>
+
+
+</LinearLayout>
