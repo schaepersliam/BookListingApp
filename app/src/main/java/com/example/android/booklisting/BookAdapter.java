@@ -91,6 +91,8 @@ public class BookAdapter extends ArrayAdapter<Book> {
         }
         title.setText(bookTitle.toString());
 
+
+
         return listItemView;
     }
 }

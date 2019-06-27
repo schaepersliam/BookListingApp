@@ -95,6 +95,7 @@ class QueryUtils {
         String author = null;
         String thumbnailUrl;
         String title;
+        String url;
         int bookCount;
         JSONArray jsonArray;
 
@@ -130,8 +131,11 @@ class QueryUtils {
                 if (volumeInfo.has("title")) {
                     title = volumeInfo.getString("title");
                 } else { title = "No title found"; }
+                if (volumeInfo.has("infoLink")) {
+                    url = volumeInfo.getString("infoLink");
+                } else { url = ""; }
 
-                Book book = new Book(title, thumbnailUrl, author, ratings, price);
+                Book book = new Book(title, thumbnailUrl, author, ratings, price,url);
                 books.add(book);
             }
         } catch (JSONException e) {

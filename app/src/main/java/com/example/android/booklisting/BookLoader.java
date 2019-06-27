@@ -26,7 +26,7 @@ public class BookLoader extends AsyncTaskLoader<List<Book>> {
         if (mUrl == null) {
             return null;
         }
-        List<Book> books = null;
+        List<Book> books;
         books = QueryUtils.fetchEarthquakeData(mUrl);
 
         return books;
