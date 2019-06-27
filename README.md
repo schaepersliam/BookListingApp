@@ -5,6 +5,16 @@ I would really like to hear feedback from you! :)
 
 Please feel free to fork and clone.
 
+### Screenshots
+
+Main page
+
+<img src="./content/main_page.png" alt="drawing" width="325"/>
+
+Search page with top matches
+
+<img src="./content/search_page.png" alt="drawing" width="325"/>
+
 ### Feedback
 I would be very pleased about an honest feedback.
 You can give me feedback on [Udacity's Forum page](https://discussions.udacity.com/t/feedback-request-book-listing-app/481504) 
